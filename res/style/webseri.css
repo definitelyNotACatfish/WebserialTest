@@ -1,0 +1,122 @@
+@font-face
+{
+    font-family: "Roboto Regular";
+    src: url('./font/roboto.ttf') format('truetype');
+}
+
+
+html, body, input, textarea, button 
+{
+    font-family: "Roboto Regular";
+}
+
+
+body
+{
+    height: 100vh;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+html
+{
+    height: 100vh;
+    width: 80vw;
+    display: table;
+    margin: auto;
+    background-image: url('./images/backgrnd.jpg');
+}
+
+
+.collapsedIndicator
+{
+    position: relative; 
+    float: right;
+    margin-top: 2px;
+    margin-right: 10px;
+    font-size: larger;
+}
+
+
+.collapsedContent
+{
+    display: none;
+    opacity: 0;
+    background: aliceblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+:checked + .collapsedContent 
+{
+    display: block;
+    opacity: 1;
+    animation: fade 0.5s;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.collapsedButton
+{
+    background-color: aliceblue;
+    width: 100%;
+    height: 27px;
+    cursor: pointer;
+    display: block;
+    font-size: larger;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.modalWindow
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+  
+.modalWindowContent
+{
+    background-color: #fefefe;
+    margin: 3% auto;
+    padding: 10 10 10 10;
+    border: 1px solid #888;
+    width: 80vw;
+    height: 80%; 
+    overflow-y: auto;
+}
+  
+.modalWindowclose
+{
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.modalWindowclose:hover,
+.modalWindowclose:focus
+{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+} 

@@ -1,0 +1,16 @@
+#txHistoryTable
+{
+    width: 100%;
+}
+
+#txHistoryTable th
+{
+    text-align: left;
+}
+
+#txHistoryTable td
+{
+    border-bottom: 1px dashed black;
+    vertical-align: text-top;
+    word-wrap:break-word;
+}

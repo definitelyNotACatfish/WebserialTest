@@ -1,0 +1,21 @@
+.selectComPortContainer
+{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 100%;
+}
+
+
+.selectComPortContainer.connectButton
+{
+    width: 100px;
+    float: right;
+    position: relative;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+
+.connected
+{
+    background-color: rgb(148, 210, 148);
+}

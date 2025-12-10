@@ -1,0 +1,17 @@
+.rxContainer
+{
+    width: 100%;
+}
+
+.rxContainer.textarea
+{
+    display: block;
+    min-height: 65vh;
+    resize: none;
+    background-color: rgb(250, 247, 247);
+    margin-bottom: 2vh;
+    opacity: 0.9;
+    border-width: 0;
+    font-size: 13;
+    font-family: Consolas;
+}

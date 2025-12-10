@@ -1,0 +1,38 @@
+.buttonBar
+{
+    width: 100%;
+    margin-top: 1vh;
+}
+
+
+.buttonBar.txHistoryButton
+{
+    width: 120px;
+    height: 27px;
+}
+
+
+.buttonBar.deleteRxButton
+{
+    float: right;
+    width: 120px;
+    height: 27px;
+    margin-right: 5px;
+}
+
+
+.buttonBar.deleteTxButton
+{
+    width: 120px;
+    height: 27px;
+    float: right;
+    margin-right: 5px;
+}
+
+
+.buttonBar.sendButton
+{
+    width: 70px;
+    height: 27px;
+    float: right;
+}

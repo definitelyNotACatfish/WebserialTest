@@ -1,0 +1,18 @@
+.txContainer
+{
+    width: 100%;
+}
+
+
+.txContainer.textarea
+{
+    display: block;
+    height: 27px;
+    resize: none;
+    opacity: 0.9;
+    border-width: 0;
+    font-size: 15;
+    white-space: nowrap;
+    overflow:hidden; 
+    font-family: Consolas;
+}

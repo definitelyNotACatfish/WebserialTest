@@ -1,0 +1,180 @@
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script src="./res/js/webseri.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./res/style/webseri.css">
+    <link rel="stylesheet" href="./res/style/rxCont.css">
+    <link rel="stylesheet" href="./res/style/txCont.css">
+    <link rel="stylesheet" href="./res/style/comCont.css">
+    <link rel="stylesheet" href="./res/style/btnBar.css">
+    <link rel="stylesheet" href="./res/style/txHstory.css">
+    <title>WebSerial</title>
+</head>
+<body onload="checkWebSerialBrowerSupport();">
+    <div class="selectComPortContainer">
+        <label class="collapsedIndicator">+</label>
+        <label for="selectComPortContainer collapsible" class="collapsedButton" id="selectComPortContainer label">&ThinSpace;COM Port Einstellungen</label>
+        <input type="checkbox" id="selectComPortContainer collapsible" style="display:none;">
+        <div class="collapsedContent">
+            <button onclick="connect();" type="button" class="selectComPortContainer connectButton" id="connectButton">Verbinden</button>
+            <table style="white-space: nowrap;">
+                <tr>
+                    <th style="width: 20%;"></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="selectBaudRate">Baudrate: </label>
+                    </td>
+                    <td>
+                        <select class="selectComPort selectBaudRate" id="selectBaudRate">
+                            <option value="300">300</option>
+                            <option value="600">600</option>
+                            <option value="1200">1200</option>
+                            <option value="2400">2400</option>
+                            <option value="4800">4800</option>
+                            <option value="9600">9600</option>
+                            <option value="14400">14400</option>
+                            <option value="19200">19200</option>
+                            <option value="28800">28800</option>
+                            <option value="38400">38400</option>
+                            <option value="56000">56000</option>
+                            <option value="115200">115200</option>
+                            <option value="128000">128000</option>
+                            <option value="256000">256000</option>
+                            <option selected value="2000000">2000000</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="selectDataBits">Datenbits: </label>
+                    </td>
+                    <td>
+                        <select class="selectComPort selectDataBits" id="selectDataBits">
+                            <option value="7">7</option>
+                            <option selected value="8">8</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="selectStopbits">Stopbits: </label>
+                    </td>
+                    <td>
+                            <select class="selectComPort selectStopbits" id="selectStopbits">
+                            <option selected value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="selectParity">Parität: </label>
+                    </td>
+                    <td>
+                            <select class="selectComPort selectParity" id="selectParity">
+                            <option selected value="none">none</option>
+                            <option value="even">even</option>
+                            <option value="odd">odd</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="selectComPortContainer selectHardWareFlowControl">Hardware Flusskontrolle: </label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="selectComPortContainer selectHardWareFlowControl" id="selectHardWareFlowControl">
+                    </td>
+                </tr>
+            </table> 
+        </div>
+    </div>
+    
+    <div class="rxContainer">
+        <label class="collapsedIndicator">+</label>
+        <button style="height: 22px; font-size: smaller;" class="collapsedIndicator" onclick="SaveRxDataToFile();">Speichern</button>
+        <label for="rxContainer collapsible" class="collapsedButton">&ThinSpace;Rx Einstellungen</label>
+        <input type="checkbox" id="rxContainer collapsible" style="display:none;">
+        <div class="collapsedContent">
+            <table style="white-space: nowrap;">
+                <tr>
+                    <td>
+                        <label for="rxContainer selectNewLineOn">Auto neue Zeile:</label>
+                    </td>
+                    <td>
+                        <select disabled name="rxContainer selectNewLineOn" id="selectNewLineOn">
+                            <option value="none">None</option>
+                            <option value="cr">Cr</option>
+                            <option selected value="lf">Lf</option>
+                            <option value="crlf">CrLf</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Zeichengröße:</label>
+                    </td>
+                    <td>
+                        <input type="button" onclick="alterFontSize(document.getElementById('rxTextArea'), 13, 2);" value="+" style="width: 30px;">
+                        <input type="button" onclick="alterFontSize(document.getElementById('rxTextArea'), 13, -2);" value="-" style="width: 30px;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <textarea class="rxContainer textarea" id="rxTextArea" readonly></textarea>
+    </div>
+    
+    <div class="txContainer">
+        <label class="collapsedIndicator">+</label>
+        <label for="txContainer collapsible" class="collapsedButton">&ThinSpace;Tx Einstellungen</label>
+        <input type="checkbox" id="txContainer collapsible" style="display:none;">
+        <div class="collapsedContent">
+            <table style="white-space: nowrap;">
+                <tr>
+                    <td>
+                        <label for="txContainer selectWhatSendAfter">Auto anhängen:</label>
+                    </td>
+                    <td>
+                        <select name="txContainer selectWhatSendAfter" id="selectWhatSendAfter">
+                            <option value="">None</option>
+                            <option value=&#x0d;>Cr</option>
+                            <option selected value=&#x0a;>Lf</option>
+                            <option value=&#x0d;&#x0a;>CrLf</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <textarea class="txContainer textarea" id="txTextArea" onkeydown="onTxKeydown(event);"></textarea>
+    </div>
+
+    <div class="buttonBar">
+        <button class="buttonBar txHistoryButton" onclick="showTxHistoryModal();">Tx Historie</button>
+        <button class="buttonBar sendButton" onclick="sendTxData();">Senden</button>
+        <button class="buttonBar deleteTxButton" onclick="clearTxData();">Lösche Tx Data</button>
+        <button class="buttonBar deleteRxButton" onclick="clearRxData();">Lösche Rx Data</button>
+    </div>
+    
+    <div id="myModal" class="modalWindow" style="display: none;">
+        <div class="modalWindowContent">
+            <span class="modalWindowClose" onclick="closeTxHistoryModal();">&times;</span>
+            <br>
+            <table id="txHistoryTable" class="txHistoryTable">
+                <thead>
+                <tr>
+                    <th style="width: 20%;">Zeitstempel:</th>
+                    <th style="width: 40%;">Daten (Text):</th>
+                    <th style="width: 40%;">Daten (Hex):</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
